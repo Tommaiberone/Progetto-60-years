@@ -9,13 +9,20 @@ public class Journal : MonoBehaviour
     public static bool JournalIsActive = true;
     public static bool HUDIsActive;
 
-    public GameObject JournalUI;
-    public GameObject HUD;
+    public Animator animator;
+    public GameObject OpenJournal;
+    public GameObject ClosedJournal;
     public GameObject nextPageButton;
     public GameObject prevPageButton;
     public GameObject[] Pages;
     private string currentPageName;
     private int numberOfPages;
+
+    public BooleanChoice FirstChoice;
+    public BooleanChoice SecondChoice;
+    public BooleanChoice ThirdChoice;
+    public BooleanChoice FourthChoice;
+
     private Dictionary<int, string> pageNumbers;
     private Dictionary<string, int> pageNames;
 
@@ -57,23 +64,23 @@ public class Journal : MonoBehaviour
     public void setJournalActive()
     {
         JournalIsActive = true;
-        JournalUI.SetActive(true);
+        OpenJournal.SetActive(true);
     }
 
     public void setJournalInactive()
     {
         JournalIsActive = false;
-        JournalUI.SetActive(false);
+        OpenJournal.SetActive(false);
     }
 
     public void setHUDActive () {
         HUDIsActive = true;
-        HUD.SetActive(true);
+        ClosedJournal.SetActive(true);
     }
 
     public void setHUDInactive () {
         HUDIsActive = false;
-        HUD.SetActive(false);
+        ClosedJournal.SetActive(false);
     }
 
 
@@ -157,10 +164,16 @@ public class Journal : MonoBehaviour
 
     }
 
+    public void choice (BooleanChoice choice) {
+        GameManager.Instance.setCharacterAway(choice.scelta);
+    }
+
 
     public void nextDay() {
         setJournalActive();
         setHUDInactive();
+        animator.SetTrigger("EndDay");
+        GameManager.Instance.characterPositions();
     }
 
 }

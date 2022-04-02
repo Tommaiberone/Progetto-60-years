@@ -44,6 +44,12 @@ TagManager:
   - name: Characters
     uniqueID: 765923177
     locked: 0
+  - name: Journal
+    uniqueID: 645641287
+    locked: 0
+  - name: Loading
+    uniqueID: 480165673
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
