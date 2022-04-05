@@ -1,25 +1,39 @@
 using UnityEngine;
 using System;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private TMP_Text textLabel;
 
-    public static GameManager Instance { get; private set; }
+    private StoryManager storyManager;
 
     public Character[] characters;
     public GameObject[] charactersGO;
     
     void Awake() {
-
-         //Se è già presente un'istanza del GameManager lancia un'eccezione
-         if (Instance) throw new Exception("GameManager already present in scene!");
-
-         //Assegna all'istanza del gameManager questa classe
-         Instance = this;
-
-        characterPositions();
+        storyManager = GetComponent<StoryManager>();
     }
-    public void characterPositions() {
+    void Start() {
+        UpdateCurrentStoryNode();
+        UpdateCharacterPositions();
+    }
+
+    void UpdateCurrentStoryNode() {
+        storyManager.clear();
+        storyManager.UpdateChoices();
+
+        DisplayCurrentNodeDescription(storyManager.currentStoryNode.description.textString);
+
+
+    }
+
+    public void UpdateAll(){
+        UpdateCharacterPositions();
+        UpdateCurrentStoryNode();
+    }
+
+    public void UpdateCharacterPositions() {
 
         int i = 0;
 
@@ -37,9 +51,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void setCharacterAway(bool isAway) {
+    public void SetCharacterAway(bool isAway) {
         characters[0].isAway = isAway;
     }
+
+    public void DisplayCurrentNodeDescription(string text) {
+        textLabel.text = text;
+    }
+
+    
 
 
 }

@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46534b0e99c82e34c8daec532e975eed, type: 3}
-  m_Name: Text1
+  m_Script: {fileID: 11500000, guid: 2f6a4c05f6a66db40ae348cd8705a59a, type: 3}
+  m_Name: Prova StoryNode 3
   m_EditorClassIdentifier: 
-  textString: Prova1
+  currentStoryNode: Tre
+  description:
+    textString: 'Eccoci nella schermata 3
+
+'
+  possibleChoices: []
