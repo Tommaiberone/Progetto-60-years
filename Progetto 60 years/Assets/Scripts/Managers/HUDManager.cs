@@ -10,12 +10,19 @@ public class HUDManager : MonoBehaviour
     public static bool HUDIsActive;
 
     private GameManager gameManager;
+    private StoryManager storyManager;
     public Animator animator;
     public GameObject OpenJournal;
     public GameObject ClosedJournal;
+    public GameObject endDayButton;
 
     void Awake() {
         gameManager = GetComponent<GameManager>();
+        storyManager = GetComponent<StoryManager>();
+    }
+
+    void Start() {
+        endDayButton.SetActive(false);
     }
 
     public void setJournalActive()
@@ -52,11 +59,20 @@ public class HUDManager : MonoBehaviour
     }
 
 
-    public void UpdateAll() {
+    public void SetEndDayAndUpdateAll() {
+        animator.SetTrigger("EndDay");
+        StartCoroutine(UpdateAllCoroutine());
+    }
+
+    IEnumerator UpdateAllCoroutine (){
+        
+        yield return new WaitForSeconds(2);
+        
         setJournalActive();
         setHUDInactive();
-        animator.SetTrigger("EndDay");
-        gameManager.UpdateAll();
+        storyManager.UpdateRoom();
+        endDayButton.SetActive(false);
+
     }
 
 }

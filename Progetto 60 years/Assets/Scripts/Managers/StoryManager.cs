@@ -8,9 +8,13 @@ public class StoryManager : MonoBehaviour
     public Dictionary<string, StoryNode> choicesDictionary = new Dictionary<string, StoryNode>(); 
 
     public GameManager gameManager;
+    public HUDManager hudManager;
+
+    string choiceKeyString;
 
     void Awake() {
         gameManager = GetComponent<GameManager>();
+        hudManager = GetComponent<HUDManager>();
     }
 
     public void UpdateChoices() {
@@ -19,7 +23,12 @@ public class StoryManager : MonoBehaviour
         }
     }
 
-    public void UpdateRoom(string choiceKeyString) {
+    public void TakeDecision(string choiceKeyString) {
+        this.choiceKeyString = choiceKeyString;
+        hudManager.endDayButton.SetActive(true);
+    }
+
+    public void UpdateRoom() {
         currentStoryNode = choicesDictionary[choiceKeyString];
         gameManager.UpdateAll();
     }

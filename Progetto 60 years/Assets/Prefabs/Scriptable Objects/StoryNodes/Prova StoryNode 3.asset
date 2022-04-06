@@ -18,3 +18,13 @@ MonoBehaviour:
 
 '
   possibleChoices: []
+  characters:
+  - characterName: Luigino
+    hasBeenFound: 1
+    isAway: 0
+  - characterName: Suino
+    hasBeenFound: 0
+    isAway: 0
+  - characterName: Ernesto Pene Lesto
+    hasBeenFound: 1
+    isAway: 1

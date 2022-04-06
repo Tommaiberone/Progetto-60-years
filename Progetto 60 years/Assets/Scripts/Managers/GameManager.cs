@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
 
     private StoryManager storyManager;
-
-    public Character[] characters;
     public GameObject[] charactersGO;
     
     void Awake() {
@@ -37,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         int i = 0;
 
-        foreach (Character character in characters) {
+        foreach (Character character in storyManager.currentStoryNode.characters) {
 
             if (character.hasBeenFound == true && character.isAway == false) {
                 charactersGO[i].SetActive(true);
@@ -50,16 +48,8 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
-    public void SetCharacterAway(bool isAway) {
-        characters[0].isAway = isAway;
-    }
-
     public void DisplayCurrentNodeDescription(string text) {
         textLabel.text = text;
     }
-
-    
-
 
 }

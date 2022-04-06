@@ -20,3 +20,13 @@ MonoBehaviour:
     nodeThisDecisionLeadsTo: {fileID: 11400000, guid: f4defc5a542973d48aece597c77d5c12, type: 2}
   - keyString: Due
     nodeThisDecisionLeadsTo: {fileID: 11400000, guid: 375801a6a51e10c4081708d83e649cd2, type: 2}
+  characters:
+  - characterName: Luigino
+    hasBeenFound: 1
+    isAway: 0
+  - characterName: Suino
+    hasBeenFound: 0
+    isAway: 0
+  - characterName: Ernesto Pene Lesto
+    hasBeenFound: 1
+    isAway: 0

@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Character : ScriptableObject
+[System.Serializable]
+public class Character
 {
     public string characterName;
 
     public bool hasBeenFound;
     public bool isAway;
-
-    //Parametri di umore dei personaggi
 
 
 }

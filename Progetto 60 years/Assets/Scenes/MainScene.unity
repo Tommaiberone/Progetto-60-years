@@ -180,8 +180,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 204036306}
   - {fileID: 1461954480}
+  - {fileID: 204036306}
   m_Father: {fileID: 673777734}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -405,7 +405,7 @@ RectTransform:
   m_Children:
   - {fileID: 114060214}
   m_Father: {fileID: 52048029}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -458,7 +458,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1503501677}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
-        m_MethodName: UpdateRoom
+        m_MethodName: TakeDecision
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1515,9 +1515,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1503501678}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: UpdateAll
+      - m_Target: {fileID: 1503501676}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: SetEndDayAndUpdateAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2156,7 +2156,7 @@ RectTransform:
   m_Children:
   - {fileID: 1455230654}
   m_Father: {fileID: 52048029}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2209,7 +2209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1503501677}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
-        m_MethodName: UpdateRoom
+        m_MethodName: TakeDecision
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2318,6 +2318,7 @@ MonoBehaviour:
   animator: {fileID: 556756790}
   OpenJournal: {fileID: 1690778137}
   ClosedJournal: {fileID: 212325909}
+  endDayButton: {fileID: 847899895}
 --- !u!114 &1503501677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,6 +2333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStoryNode: {fileID: 11400000, guid: 3379980e860663944855e15afd547fe5, type: 2}
   gameManager: {fileID: 1503501678}
+  hudManager: {fileID: 0}
 --- !u!114 &1503501678
 MonoBehaviour:
   m_ObjectHideFlags: 0
