@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class HUDManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    public static bool JournalIsActive = true;
-    public static bool HUDIsActive;
-
     private GameManager gameManager;
     private StoryManager storyManager;
     public Animator animator;
@@ -25,37 +22,14 @@ public class HUDManager : MonoBehaviour
         endDayButton.SetActive(false);
     }
 
-    public void setJournalActive()
-    {
-        JournalIsActive = true;
-        OpenJournal.SetActive(true);
-    }
-
-    public void setJournalInactive()
-    {
-        JournalIsActive = false;
+    public void closeJournal() {
         OpenJournal.SetActive(false);
-    }
-
-    public void setHUDActive () {
-        HUDIsActive = true;
         ClosedJournal.SetActive(true);
     }
 
-    public void setHUDInactive () {
-        HUDIsActive = false;
-        ClosedJournal.SetActive(false);
-    }
-
-
-    public void closeJournal() {
-        setJournalInactive();
-        setHUDActive();
-    }
-
     public void openJournal() {
-        setJournalActive();
-        setHUDInactive();
+        OpenJournal.SetActive(true);
+        ClosedJournal.SetActive(false);
     }
 
 
@@ -68,8 +42,8 @@ public class HUDManager : MonoBehaviour
         
         yield return new WaitForSeconds(2);
         
-        setJournalActive();
-        setHUDInactive();
+        OpenJournal.SetActive(false);
+        ClosedJournal.SetActive(true);
         storyManager.UpdateRoom();
         endDayButton.SetActive(false);
 
