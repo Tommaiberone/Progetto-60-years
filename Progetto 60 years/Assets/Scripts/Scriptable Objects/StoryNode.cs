@@ -6,6 +6,7 @@ using UnityEngine;
 public class StoryNode : ScriptableObject
 {
     public string currentStoryNode;
+    public Dialogue dialogue;
     public NextChoiceDescription description;
 
     public Choice[] possibleChoices;

@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: Prova StoryNode 2
   m_EditorClassIdentifier: 
   currentStoryNode: Due
+  dialogue:
+    speakerList:
+    - Pippo
+    - Topolino
+    - Pippo
+    dialogueList:
+    - Ciao!
+    - Cazzo vuoi
+    - Bella zio
   description:
     descriptionString: "avete appena sbloccato la porta ed ora potete andare a fare
       andare a fare delle esplorazioni, per capire cosa sta succedendo di fuori e

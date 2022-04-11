@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] buttonsGOs;
     
     private StoryManager storyManager;
+    private DialogueManager dialogueManager;
     public GameObject[] charactersGO;
     
     void Awake() {
         storyManager = GetComponent<StoryManager>();
+        dialogueManager = GetComponent<DialogueManager>();
     }
     void Start() {
         UpdateCurrentStoryNode();
@@ -26,12 +28,13 @@ public class GameManager : MonoBehaviour
 
         DisplayCurrentNodeDescription(storyManager.currentStoryNode.description);
 
+        StartCoroutine(dialogueManager.PlayDialogue());
 
     }
 
     public void UpdateAll(){
-        UpdateCharacterPositions();
         UpdateCurrentStoryNode();
+        UpdateCharacterPositions();
     }
 
     public void UpdateCharacterPositions() {

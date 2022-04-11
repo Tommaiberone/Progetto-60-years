@@ -8,6 +8,7 @@ public class HUDManager : MonoBehaviour
     public static bool GameIsPaused = false;
     private GameManager gameManager;
     private StoryManager storyManager;
+    private DialogueManager dialogueManager;
     public Animator animator;
     public GameObject OpenJournal;
     public GameObject ClosedJournal;
@@ -16,10 +17,12 @@ public class HUDManager : MonoBehaviour
     void Awake() {
         gameManager = GetComponent<GameManager>();
         storyManager = GetComponent<StoryManager>();
+        dialogueManager = GetComponent<DialogueManager>();
     }
 
     void Start() {
         endDayButton.SetActive(false);
+        closeJournal();
     }
 
     public void closeJournal() {

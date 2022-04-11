@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: Prova StoryNode 3
   m_EditorClassIdentifier: 
   currentStoryNode: Tre
+  dialogue:
+    speakerList:
+    - Pippo
+    - Topolino
+    - Pippo
+    dialogueList:
+    - Ciao!
+    - Cazzo vuoi
+    - Bella zio
   description:
     descriptionString: "Eccall\xE0"
     choiceString: 
+    choicesButtonTexts: []
   possibleChoices: []
   characters:
   - characterName: Luigino
