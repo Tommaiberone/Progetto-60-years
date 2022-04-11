@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStoryNode: Tre
   description:
-    textString: 'Eccoci nella schermata 3
-
-'
+    descriptionString: "Eccall\xE0"
+    choiceString: 
   possibleChoices: []
   characters:
   - characterName: Luigino
@@ -28,3 +27,4 @@ MonoBehaviour:
   - characterName: Ernesto Pene Lesto
     hasBeenFound: 1
     isAway: 1
+  objects: []

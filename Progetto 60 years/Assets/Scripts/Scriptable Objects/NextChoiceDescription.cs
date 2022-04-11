@@ -5,5 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class NextChoiceDescription
 {
-    [TextArea] public string textString;
+    [TextArea] public string descriptionString;
+    [TextArea] public string choiceString;
+    public string[] choicesButtonTexts;
 }

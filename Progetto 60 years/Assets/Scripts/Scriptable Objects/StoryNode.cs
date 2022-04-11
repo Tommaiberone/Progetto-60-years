@@ -11,5 +11,6 @@ public class StoryNode : ScriptableObject
     public Choice[] possibleChoices;
 
     public Character[] characters;
+    public MyObject[] objects;
 
 }

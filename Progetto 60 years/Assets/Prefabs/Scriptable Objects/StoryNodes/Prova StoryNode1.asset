@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStoryNode: Uno
   description:
-    textString: Ciao a turututti, sono il primo storyNode
+    descriptionString: " la porta \xE8 bloccata, cosa volete fare? Sbloccarla significa
+      poter uscire dalla stanza e poter fare delle perlustrazioni ma allo stesso
+      tempo vi render\xE0 vulnerabili alle incursioni.\r"
+    choiceString: Vuoi sbloccarla o tenerla bloccata?
+    choicesButtonTexts:
+    - Tenerla bloccata
+    - Sbloccare la porta
   possibleChoices:
   - keyString: Uno
     nodeThisDecisionLeadsTo: {fileID: 11400000, guid: f4defc5a542973d48aece597c77d5c12, type: 2}
@@ -30,3 +36,4 @@ MonoBehaviour:
   - characterName: Ernesto Pene Lesto
     hasBeenFound: 1
     isAway: 0
+  objects: []

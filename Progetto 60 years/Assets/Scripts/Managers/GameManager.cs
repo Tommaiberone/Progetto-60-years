@@ -4,8 +4,11 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text textLabel;
-
+    [SerializeField] private TMP_Text descriptionLabel;
+    [SerializeField] private TMP_Text choiceLabel;
+    [SerializeField] private TMP_Text[] buttonsLabels;
+    [SerializeField] private GameObject[] buttonsGOs;
+    
     private StoryManager storyManager;
     public GameObject[] charactersGO;
     
@@ -21,7 +24,7 @@ public class GameManager : MonoBehaviour
         storyManager.clear();
         storyManager.UpdateChoices();
 
-        DisplayCurrentNodeDescription(storyManager.currentStoryNode.description.textString);
+        DisplayCurrentNodeDescription(storyManager.currentStoryNode.description);
 
 
     }
@@ -48,8 +51,28 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    public void DisplayCurrentNodeDescription(string text) {
-        textLabel.text = text;
+    public void DisplayCurrentNodeDescription(NextChoiceDescription description) {
+
+        //Aggiorna i Label di testo del diario
+        descriptionLabel.text = description.descriptionString;
+        choiceLabel.text = description.choiceString;
+
+        int i = 0;
+
+        //Per ogni scelta presente nel nodo corrente genera i bottoni e ci mette le stringhe sopra
+        foreach (String choiceButtonText in description.choicesButtonTexts) {
+            buttonsGOs[i].SetActive(true);
+            buttonsLabels[i].text = choiceButtonText;
+            i++;
+        }
+
+
+        //Rende invisibili i bottoni in eccesso
+        while (i<4) {
+            buttonsGOs[i].SetActive(false);
+            i++;
+        }
+         
     }
 
 }
