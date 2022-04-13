@@ -6,8 +6,6 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-
-    private GameManager gameManager;
     private StoryManager storyManager;
     private HUDManager hudManager;
     public StoryNode currentStoryNode;
@@ -15,16 +13,11 @@ public class DialogueManager : MonoBehaviour
     public Image characterImage;
     public TMP_Text dialogueSpeakerLabel;
     public TMP_Text dialogueTextLabel;
+    float timeBetweenLetters = .05f;
 
     void Awake() {
-        gameManager = GetComponent<GameManager>();
         storyManager = GetComponent<StoryManager>();
         hudManager = GetComponent<HUDManager>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {        
     }
 
     public IEnumerator PlayDialogue() {
@@ -91,15 +84,16 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    //Stampa lettera per lettera con un delay pari a "timeBetweenLetters"
+    //la stringa dialogue sulla label fornitagli
     IEnumerator PlayText(TMP_Text label, string dialogue) {
 
         foreach (char c in dialogue) 
         {
             label.text += c;
             //playSound();
-            yield return new WaitForSeconds (.2f);
+            yield return new WaitForSeconds (timeBetweenLetters);
         }
-
 
         yield return null;
     }

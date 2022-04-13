@@ -6,5 +6,6 @@ using UnityEngine;
 public class Choice
 {
     public string keyString;
+    public bool isSemiChoice;
     public StoryNode nodeThisDecisionLeadsTo;
 }
