@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] private TMP_Text descriptionLabel;
     [SerializeField] private TMP_Text choiceLabel;
+    [SerializeField] private TMP_Text transitionDescription;
     [SerializeField] private TMP_Text[] buttonsLabels;
     [SerializeField] private GameObject[] buttonsGOs;
     public GameObject[] charactersGO;
@@ -92,6 +93,9 @@ public class HUDManager : MonoBehaviour
 
         //Fa partire l'animazione del cambio giorno 
         animator.SetTrigger("EndDay");
+
+        transitionDescription.text = storyManager.transitionDescription;
+
 
         //Dà il via alla procedura di aggiornamento di ciò che c'è a schermo
         StartCoroutine(UpdateAllCoroutine());

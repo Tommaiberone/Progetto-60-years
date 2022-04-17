@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class StoryManager : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class StoryManager : MonoBehaviour
 
     private HUDManager hudManager;
     private DialogueManager dialogueManager;
-
     string choiceKeyString;
+    public string transitionDescription;
 
     //Acquisisce le componenti degli altri manager
     void Awake() {
@@ -31,21 +32,41 @@ public class StoryManager : MonoBehaviour
         StartCoroutine(dialogueManager.PlayDialogue());
     }
 
-
-    //Azzera il dizionario delle scelte e aggiunge tutte quelle presenti nel nodo corrente
     public void UpdateChoices() {
-
+        
+        //Azzera il dizionario delle scelte
         choicesDictionary.Clear();
 
-        foreach (Choice choice in currentStoryNode.possibleChoices) {
-            choicesDictionary.Add(choice.keyString, choice.nodeThisDecisionLeadsTo);
+        //Se il nodo corrente non presenta scelte da compiere rende immediatamente
+        //attivo il pulsante prossimo giorno e imposta come stringa chiave del prossimo
+        //nodo l'unico al quale si può giungere
+        if (currentStoryNode.possibleChoices.Length == 1) {
+            hudManager.endDayButton.SetActive(true);
+            choiceKeyString = currentStoryNode.possibleChoices[0].keyString;
+            transitionDescription = currentStoryNode.possibleChoices[0].transitionDescription;
+        }
+
+        //Altrimenti aggiunge al dizionario tutte quelle presenti nel nodo corrente
+        else {
+            foreach (Choice choice in currentStoryNode.possibleChoices) {
+                choicesDictionary.Add(choice.keyString, choice.nodeThisDecisionLeadsTo);
+            }
         }
     }
 
     //Aggiorna la scelta presa e rende attivo il bottone giusto di EndDay
     //a seconda che quella corrente sia una scelta o una semiscelta
     public void TakeDecision(string choiceKeyString) {
+
         this.choiceKeyString = choiceKeyString;
+
+        //Cerca nelle scelte possibili quella corretta e imposta la transitionDescription
+        //secondo quanto trovato nella scelta
+        foreach (Choice choice in currentStoryNode.possibleChoices) {
+            if (choice.keyString == choiceKeyString) {
+                transitionDescription = choice.transitionDescription;
+            }
+        }
 
         if (CheckIfSemiChoice()) {
             hudManager.EndDayWithoutAnimationButton.SetActive(true);

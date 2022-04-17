@@ -7,5 +7,6 @@ public class Choice
 {
     public string keyString;
     public bool isSemiChoice;
+    public string transitionDescription;
     public StoryNode nodeThisDecisionLeadsTo;
 }
